@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "name": "User ro'yxatdan o'tkazish",
+        "description": "Foydalanuvchini ro'yxatdan o'tkazish uchun POST endpoint yaratish."
+    },
+    {
+        "id": 2,
+        "name": "Login tizimi",
+        "description": "Foydalanuvchi email va parol orqali tizimga kirishini amalga oshirish."
+    },
+    {
+        "id": 3,
+        "name": "JWT autentifikatsiya",
+        "description": "Token asosida himoyalangan endpointlar yaratish."
+    },
+    {
+        "id": 4,
+        "name": "Todo CRUD",
+        "description": "Todo qo'shish, o'qish, yangilash va o'chirish endpointlarini yaratish."
+    },
+    {
+        "id": 6,
+        "name": "Error handling middleware",
+        "description": "Server xatolarini markazlashgan holda ushlovchi middleware yozish."
+    },
+    {
+        "id": 7,
+        "name": "Logger qo'shish",
+        "description": "Har bir so'rovni log faylga yozib boruvchi tizim yaratish."
+    },
+    {
+        "id": 8,
+        "name": "Parolni hash qilish",
+        "description": "bcrypt yordamida foydalanuvchi parollarini xavfsiz saqlash."
+    },
+    {
+        "id": 9,
+        "name": "Pagination qo'llash",
+        "description": "Katta ro'yxatlarni sahifalab chiqarish funksiyasini qo'shish."
+    },
+    {
+        "id": 10,
+        "name": "Swagger dokumentatsiya",
+        "description": "API endpointlar uchun Swagger orqali hujjatlashtirish yaratish."
+    },
+    {
+        "id": 11,
+        "name": "Search funksiyasi",
+        "description": "Todo yoki userlarni qidirish imkoniyatini qo'shish."
+    },
+    {
+        "id": 12,
+        "name": "Filterlash",
+        "description": "Status yoki sana bo'yicha ma'lumotlarni filterlash."
+    },
+    {
+        "id": 13,
+        "name": "Role-based access",
+        "description": "Admin va oddiy user huquqlarini ajratish."
+    },
+    {
+        "id": 14,
+        "name": "File upload",
+        "description": "Foydalanuvchi fayllarini serverga yuklash imkoniyatini yaratish."
+    },
+    {
+        "id": 15,
+        "name": "Rate limiting",
+        "description": "Ko'p so'rov yuborishni cheklash orqali API xavfsizligini oshirish."
+    }
+]
