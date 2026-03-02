@@ -86,20 +86,47 @@ const server = createServer((req, res) => {
                 return res.end(JSON.stringify({ message: "item not found" }));
             }
         }
-        // updata data by id
-        if (req.method === "PATCH" && id) {
+
+        // add new todo
+
+        if (req.method === "POST") {
             const nameQuery = parsedUrl.searchParams.get("name");
             const descQuery = parsedUrl.searchParams.get("description");
 
+            if (nameQuery && descQuery) {
+                data.push({
+                    id: Number(data[-1]["id"]) + 1,
+                    name: nameQuery,
+                    description: descQuery,
+                });
+
+                writeFileSync(
+                    "./data/todo.json",
+                    JSON.stringify(data, null, 4),
+                );
+
+                res.writeHead(200, {
+                    "content-type": "application/json; charset=utf-8",
+                });
+
+                return res.end(JSON.stringify({ message: "todo added" }));
+            }
+        }
+
+        // updata data by id
+        if (req.method === "PATCH" && id) {
+            // so'rovdan kelgan paramatrlarni qiymatini ajratib oladi
+            const nameQuery = parsedUrl.searchParams.get("name");
+            const descQuery = parsedUrl.searchParams.get("description");
+
+            const todoId = Number(id);
+            const index = data.findIndex((e) => Number(e.id) == todoId);
             let body = "";
             req.on("data", (chunk) => {
                 body += chunk.toString();
             });
 
             req.on("end", () => {
-                const todoId = Number(id);
-                const index = data.findIndex((e) => Number(e.id) == todoId);
-
                 let update = {};
                 if (body.trim()) {
                     try {
@@ -149,7 +176,6 @@ const server = createServer((req, res) => {
                 return res.end(JSON.stringify({ message: "todo updated" }));
             });
         }
-        // update
     } else {
         res.writeHead(404, {
             "content-type": "application/json; charset=utf-8",
