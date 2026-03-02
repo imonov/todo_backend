@@ -26,13 +26,13 @@
     },
     {
         "id": 7,
-        "name": "Logger qo'shish",
-        "description": "Har bir so'rovni log faylga yozib boruvchi tizim yaratish."
+        "name": "yanginalish",
+        "description": "todo yangilangan"
     },
     {
         "id": 8,
-        "name": "Parolni hash qilish",
-        "description": "bcrypt yordamida foydalanuvchi parollarini xavfsiz saqlash."
+        "name": "deploy",
+        "description": "loyihani serverga deploy qilish"
     },
     {
         "id": 9,

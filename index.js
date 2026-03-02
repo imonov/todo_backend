@@ -86,6 +86,70 @@ const server = createServer((req, res) => {
                 return res.end(JSON.stringify({ message: "item not found" }));
             }
         }
+        // updata data by id
+        if (req.method === "PATCH" && id) {
+            const nameQuery = parsedUrl.searchParams.get("name");
+            const descQuery = parsedUrl.searchParams.get("description");
+
+            let body = "";
+            req.on("data", (chunk) => {
+                body += chunk.toString();
+            });
+
+            req.on("end", () => {
+                const todoId = Number(id);
+                const index = data.findIndex((e) => Number(e.id) == todoId);
+
+                let update = {};
+                if (body.trim()) {
+                    try {
+                        update = JSON.parse(body);
+                    } catch (error) {
+                        res.writeHead(400, {
+                            "content-type": "application/json; charset=utf-8",
+                        });
+                        res.end(JSON.stringify({ message: "xato json" }));
+                    }
+                }
+
+                if (nameQuery !== null) {
+                    update.name = nameQuery;
+                }
+
+                if (descQuery !== null) {
+                    update.description = descQuery;
+                }
+
+                if (Object.keys(update).length === 0) {
+                    res.writeHead(400, {
+                        "content-type": "application/json; charset=utf-8",
+                    });
+                    res.end(
+                        JSON.stringify({ message: "data yangilanish yo'q" }),
+                    );
+                }
+
+                if (update.name !== undefined) {
+                    data[index].name = update.name;
+                }
+
+                if (update.description !== undefined) {
+                    data[index].description = update.description;
+                }
+
+                writeFileSync(
+                    "./data/todo.json",
+                    JSON.stringify(data, null, 4),
+                );
+
+                res.writeHead(200, {
+                    "content-type": "application/json; charset=utf-8",
+                });
+
+                return res.end(JSON.stringify({ message: "todo updated" }));
+            });
+        }
+        // update
     } else {
         res.writeHead(404, {
             "content-type": "application/json; charset=utf-8",
