@@ -93,24 +93,27 @@ const server = createServer((req, res) => {
             const nameQuery = parsedUrl.searchParams.get("name");
             const descQuery = parsedUrl.searchParams.get("description");
 
-            if (nameQuery && descQuery) {
-                data.push({
-                    id: Number(data[-1]["id"]) + 1,
-                    name: nameQuery,
-                    description: descQuery,
-                });
-
-                writeFileSync(
-                    "./data/todo.json",
-                    JSON.stringify(data, null, 4),
-                );
-
-                res.writeHead(200, {
+            if (!nameQuery?.trim() || !descQuery.trim()) {
+                res.writeHead(400, {
                     "content-type": "application/json; charset=utf-8",
                 });
-
-                return res.end(JSON.stringify({ message: "todo added" }));
+                return res.end(JSON.stringify({ message: "invalid data" }));
             }
+
+            const newId = data.length === 0 ? 1 : Number(data.at(-1).id) + 1;
+            data.push({
+                id: newId,
+                name: nameQuery,
+                description: descQuery,
+            });
+
+            writeFileSync("./data/todo.json", JSON.stringify(data, null, 4));
+
+            res.writeHead(201, {
+                "content-type": "application/json; charset=utf-8",
+            });
+
+            return res.end(JSON.stringify({ message: "todo created" }));
         }
 
         // updata data by id

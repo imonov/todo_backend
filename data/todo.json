@@ -68,5 +68,20 @@
         "id": 15,
         "name": "Rate limiting",
         "description": "Ko'p so'rov yuborishni cheklash orqali API xavfsizligini oshirish."
+    },
+    {
+        "id": 16,
+        "name": "uyga vazifa",
+        "description": "ertangi uyga vazifani qil!!!!"
+    },
+    {
+        "id": 17,
+        "name": "uyga vazifa",
+        "description": "ertangi uyga vazifani qil!!!!"
+    },
+    {
+        "id": 18,
+        "name": "uyga sur",
+        "description": "iftorlikni qildinda uyga sur"
     }
 ]
