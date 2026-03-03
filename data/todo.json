@@ -83,5 +83,20 @@
         "id": 18,
         "name": "uyga sur",
         "description": "iftorlikni qildinda uyga sur"
+    },
+    {
+        "id": 19,
+        "name": "html orqali yaratilgan",
+        "description": "bu html orqali test uchun yaratilgan...."
+    },
+    {
+        "id": 20,
+        "name": "wrfgw4g",
+        "description": "wegfw4f"
+    },
+    {
+        "id": 21,
+        "name": "yangi",
+        "description": "bu yangi task"
     }
 ]
